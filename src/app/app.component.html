@@ -1,0 +1,81 @@
+<div class="container">
+  <!-- Header start -->
+  <div class="card-header">
+    <h1>Search Shortest Path</h1>
+  </div>
+  <!-- Header end -->
+  <div class="card">
+    <!-- Content start -->
+    <div class="card-body">
+      <form class="form-horizontal" action="/action_page.php">
+        <div class="form-group">
+          <label for="Source">Select Source:</label>
+          <select class="form-control" id="Source" [(ngModel)]="source" name="source">
+            <option *ngFor="let source of nodes; let i = index" [value]="source.planetNode">{{ source.planetNode }} - {{ source.planetName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="Destination">Select Destination:</label>
+          <select class="form-control" id="Destination" [(ngModel)]="destination" name="destination">
+            <option *ngFor="let destination of nodes; let i = index" [value]="destination.planetNode">{{ destination.planetNode }} - {{ destination.planetName }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" [(ngModel)]="traffic" name="traffic" /> Include Traffic</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="button">
+            <button type="submit" class="btn btn-primary" (click)="findPath()">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- Content end -->
+  </div>
+
+  <!-- Result start -->
+  <div *ngIf="shortestPath.distance">
+    <div class="card">
+      <div class="path-details">
+        <h4>
+          <div class="card-header">
+            <h3>Path Result</h3>
+          </div>
+        </h4>
+        <div *ngIf="shortestPath.distance">
+          <Label>Distance Between Nodes :
+            <strong>{{shortestPath.distance}}</strong>
+          </Label>
+        </div>
+        <div *ngIf="shortestPath.traffic">
+          <Label>Traffic Between Nodes :
+            <strong>{{shortestPath.traffic}}</strong>
+          </Label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3>Shortest Path</h3>
+      </div>
+      <div class="card-body result-body">
+        <div class="col-md-12 block" *ngFor="let node of shortestPath.nodes; let i = index;">
+        <div class="circle">
+          <p><strong>{{node}} - ({{shortestPath.planetNames[i]}})</strong></p>
+        </div>
+        </div>
+        <div class="col-md-12 line-block">
+          <div class="connecting-line" id="connectingLine">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Result end -->
+</div>

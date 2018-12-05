@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+/*Custom CSS*/
+.card-header {
+    text-align: center;
+}
+
+.button {
+    text-align: center;
+}
+
+.block {
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+}
+.circle {
+    background: #008bff;
+    border-radius: 200px;
+    color: white;
+    height: 100px;
+    font-weight: bold;
+    width: 100px;
+    display: table;
+    margin: 40px auto;
+}
+.circle p {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.connecting-line{
+    width: 4px;
+    height: 0;
+    background: red;
+    margin: 0 auto;
+}
+
+.line-block{
+    position: absolute;
+    top: 160px;
+    margin-left: -20px;
+    z-index: 0;
+}
